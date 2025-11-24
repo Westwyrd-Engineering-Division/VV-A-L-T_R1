@@ -1,0 +1,26 @@
+vvalt:
+  model:
+    input_dim: 10
+    frame_dim: 8
+    task_dim: 5
+    hidden_dim: 16  # Optional, defaults to 2*frame_dim
+    seed: 42
+
+  runtime:
+    batch_size_limit: 100
+    enable_trace: false  # Production default
+    safety_level: STANDARD  # PERMISSIVE, STANDARD, STRICT
+    memory_tier: 2  # 1, 2, or 3
+
+  performance:
+    lazy_loading: true
+    cache_graph_normalization: true
+    max_cached_graphs: 10
+    use_float64: false
+
+  logging:
+    level: WARNING  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+    log_traces: false
+    log_warnings: true
+    structured_logging: false
+    log_file: null  # Path to log file, or null for stdout only

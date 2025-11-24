@@ -1,0 +1,139 @@
+# V.V.A.L.T Runtime Configuration Example
+# This file demonstrates all available runtime configuration options
+
+runtime:
+  # Configuration metadata
+  config_version: "1.0.0"
+  description: "Production runtime configuration for V.V.A.L.T"
+  tags:
+    - production
+    - stable
+    - optimized
+
+  # Execution configuration
+  execution:
+    mode: PRODUCTION  # DEVELOPMENT, TESTING, STAGING, PRODUCTION, BENCHMARK
+    batch_size_limit: 100
+    auto_batch: false
+    batch_timeout_ms: 1000
+    inference_timeout_ms: 5000
+    component_timeout_ms: 1000
+    enable_timeout: false
+    max_retries: 3
+    retry_delay_ms: 100
+    retry_backoff: 2.0
+    max_workers: 1
+    enable_parallel: false
+    enforce_determinism: true
+    verify_determinism: false
+    determinism_check_trials: 3
+
+  # Safety configuration
+  safety:
+    level: STANDARD  # PERMISSIVE, STANDARD, STRICT, PARANOID
+    enable_bounds_check: true
+    safe_bounds:
+      - -10.0
+      - 10.0
+    clip_to_bounds: true
+    check_nan: true
+    check_inf: true
+    fail_on_nan: true
+    fail_on_inf: true
+    validate_inputs: true
+    validate_shapes: true
+    validate_dtypes: true
+    validate_outputs: true
+    validate_output_range: true
+    validate_graph_symmetry: true
+    validate_graph_connectivity: false
+    validate_graph_weights: true
+    epsilon: 1.0e-8
+    max_gradient_norm: 10.0
+    check_numerical_stability: true
+
+  # Performance configuration
+  performance:
+    lazy_loading: true
+    lazy_component_init: false
+    cache_strategy: LRU  # NONE, LRU, LFU, TTL, ADAPTIVE
+    cache_graph_normalization: true
+    cache_attention_weights: false
+    max_cached_graphs: 10
+    max_cached_computations: 50
+    cache_ttl_seconds: 3600
+    use_float64: false
+    use_mixed_precision: false
+    clear_intermediate: false
+    use_vectorization: true
+    use_graph_optimization: true
+    fuse_operations: false
+    enable_profiling: false
+    profile_components: false
+    profile_memory: false
+
+  # Resource configuration
+  resources:
+    memory_tier: 2  # 1=TIER_1, 2=TIER_2, 3=TIER_3, 4=TIER_4
+    max_memory_mb: null
+    memory_warning_threshold: 0.8
+    enable_memory_tracking: false
+    max_graph_nodes: 10000
+    max_graph_edges: 100000
+    max_frame_dim: 2048
+    max_input_dim: 4096
+    max_batch_size: 1000
+    max_checkpoint_size_mb: 500
+    max_trace_size_mb: 100
+
+  # Monitoring configuration
+  monitoring:
+    log_level: WARNING  # DEBUG, INFO, WARNING, ERROR, CRITICAL, SILENT
+    log_traces: false
+    log_warnings: true
+    log_errors: true
+    structured_logging: false
+    log_file: null
+    enable_metrics: true
+    collect_latency: true
+    collect_throughput: true
+    collect_errors: true
+    collect_resource_usage: false
+    export_prometheus: false
+    prometheus_port: 9090
+    export_interval_seconds: 60
+    tracing_level: NONE  # NONE, MINIMAL, STANDARD, DETAILED, EXHAUSTIVE
+    trace_sampling_rate: 0.1
+    enable_alerts: false
+    alert_on_errors: true
+    alert_threshold_errors: 10
+    alert_webhook: null
+
+  # Integration configuration
+  integration:
+    hf_compatible: false
+    save_pretrained_format: false
+    checkpoint_dir: "./checkpoints"
+    auto_checkpoint: false
+    checkpoint_interval: 1000
+    keep_n_checkpoints: 5
+    enable_onnx_export: false
+    enable_torchscript_export: false
+    enable_rest_api: false
+    api_port: 8000
+    enable_grpc: false
+    grpc_port: 50051
+
+  # Debug configuration
+  debug:
+    debug_mode: false
+    verbose: false
+    enable_assertions: false
+    enable_type_checks: false
+    break_on_error: false
+    save_error_states: false
+    error_state_dir: "./debug"
+    enable_visualization: false
+    save_attention_maps: false
+    save_frame_plots: false
+    visualization_dir: "./visualizations"

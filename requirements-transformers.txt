@@ -1,0 +1,13 @@
+# V.V.A.L.T HuggingFace Transformers Integration
+# Install with: pip install -r requirements-transformers.txt
+
+# Core dependencies
+numpy>=1.20.0,<3.0.0
+pyyaml>=5.4.0
+
+# HuggingFace transformers integration
+torch>=1.10.0
+transformers>=4.20.0
+
+# Optional: for model hub integration
+huggingface-hub>=0.10.0
